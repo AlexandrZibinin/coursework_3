@@ -1,7 +1,4 @@
 import json
-import os
-
-operations = os.path.abspath('../operations.json')
 
 
 def get_dict_from_json(filename):
@@ -27,7 +24,7 @@ def sort_operations(operations):
 
 def five_operations(operations):
     """выводит 5 последний платежей"""
-    return operations[:4]
+    return operations[:5]
 
 
 def formatter_date(operations):
