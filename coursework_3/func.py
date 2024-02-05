@@ -25,9 +25,14 @@ def sort_operations(operations):
     return sorted(operations, key=lambda operation: operation['date'], reverse=True)
 
 
+def five_operations(operations):
+    """выводит 5 последний платежей"""
+    return operations[:4]
 
-# executed_operations = get_executed(get_dict_from_json(operations))
-# print(sort_operations(executed_operations))
+
+executed_operations = get_executed(get_dict_from_json(operations))
+sort_operation = sort_operations(executed_operations)
+print(five_operations(sort_operation))
 
 
 
