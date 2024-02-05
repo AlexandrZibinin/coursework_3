@@ -1,6 +1,7 @@
 import os
 from func import *
 
+
 def main():
     filename = os.path.abspath('../operations.json')
 
