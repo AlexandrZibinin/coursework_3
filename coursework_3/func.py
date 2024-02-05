@@ -30,11 +30,17 @@ def five_operations(operations):
     return operations[:4]
 
 
-executed_operations = get_executed(get_dict_from_json(operations))
-sort_operation = sort_operations(executed_operations)
-print(five_operations(sort_operation))
+def formatter_date(operations):
+    date_lst = operations['date'].split('T')
+    new_date = date_lst[0].split('-')
+    return '.'.join(new_date[::-1])
 
-
+# executed_operations = get_executed(get_dict_from_json(operations))
+# sort_operation = sort_operations(executed_operations)
+# # print(five_operations(sort_operation))
+# for i in five_operations(sort_operation):
+#     print(formatter_date(i))
+#
 
 
 #
