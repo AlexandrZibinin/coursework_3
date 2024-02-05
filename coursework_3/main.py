@@ -12,6 +12,7 @@ def main():
 
     for operation in operations:
         print(formatter_date(operation), operation['description'])
+        print(f'{formatter_from(operation['from'])} -> {}')
         print(operation['operationAmount']['amount'], operation['operationAmount']['currency']['name'])
         print()
 

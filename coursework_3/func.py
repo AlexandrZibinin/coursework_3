@@ -12,7 +12,7 @@ def get_executed(all_operations):
     """функция создает новый список словарей, включающих только операции типа EXECUTED"""
     operations = []
     for data in all_operations:
-        if 'state' in data and data['state'] == 'EXECUTED':
+        if 'state' in data and data['state'] == 'EXECUTED' and 'from' in data:
             operations.append(data)
     return operations
 
@@ -32,24 +32,10 @@ def formatter_date(operations):
     new_date = date_lst[0].split('-')
     return '.'.join(new_date[::-1])
 
-# executed_operations = get_executed(get_dict_from_json(operations))
-# sort_operation = sort_operations(executed_operations)
-# # print(five_operations(sort_operation))
-# for i in five_operations(sort_operation):
-#     print(formatter_date(i))
-#
-
-
-#
-# all_operations = get_dict_from_json(operations)
-#
-# get_executed(all_operations)
-# получить словарь выполненных операций
-# отсортировать словарь по дате
-# вывести 5 последних операций
-# - Операции разделены пустой строкой.
-# - Дата перевода представлена в формате ДД.ММ.ГГГГ (пример: 14.10.2018).
-# - Сверху списка находятся самые последние операции (по дате).
-# - Номер карты замаскирован и не отображается целиком в формате  XXXX XX** **** XXXX (видны первые 6 цифр и последние 4, разбито по блокам по 4 цифры, разделенных пробелом).
-# - Номер счета замаскирован и не отображается целиком в формате  **XXXX
-# (видны только последние 4 цифры номера счета).
+def formatter_from(from_pay):
+    format_from = from_pay.split()
+    name = ' '.join(format_from[:-1])
+    number = ''.join(format_from[-1])
+    if len(format_from[-1]) < 17:
+        return f'{name} {number[0:4]} {number[4:6]}** **** {number[-5:-1]}'
+    return f'{name} {'*'* 16}{number[-5:-1]}'
