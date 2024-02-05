@@ -12,11 +12,10 @@ def main():
 
     for operation in operations:
         print(formatter_date(operation), operation['description'])
-        print(f'{formatter_from(operation['from'])} -> {}')
+        print(f'{formatter_from(operation['from'])} -> {formatter_to(operation['to'])}')
         print(operation['operationAmount']['amount'], operation['operationAmount']['currency']['name'])
         print()
 
-        # print(formatter_date(operation['date']))
 
 if __name__ == '__main__':
     main()

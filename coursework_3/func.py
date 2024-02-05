@@ -32,10 +32,19 @@ def formatter_date(operations):
     new_date = date_lst[0].split('-')
     return '.'.join(new_date[::-1])
 
-def formatter_from(from_pay):
-    format_from = from_pay.split()
-    name = ' '.join(format_from[:-1])
-    number = ''.join(format_from[-1])
-    if len(format_from[-1]) < 17:
+def formatter_from(pay):
+    format_pay = pay.split()
+    name = ' '.join(format_pay[:-1])
+    number = ''.join(format_pay[-1])
+    if len(format_pay[-1]) < 17:
+        return f'{name} {number[0:4]} {number[4:6]}** **** {number[-5:-1]}'
+    return f'{name} {'*'* 16}{number[-5:-1]}'
+
+
+def formatter_to(pay):
+    format_pay = pay.split()
+    name = ' '.join(format_pay[:-1])
+    number = ''.join(format_pay[-1])
+    if len(format_pay[-1]) < 17:
         return f'{name} {number[0:4]} {number[4:6]}** **** {number[-5:-1]}'
     return f'{name} {'*'* 16}{number[-5:-1]}'
