@@ -18,7 +18,7 @@ def get_executed(all_operations):
 
 
 def sort_operations(operations):
-    """Сортирует список по дате в порядке убывания"""
+    """Сортирует список по дате в порядке убывания по дате"""
     return sorted(operations, key=lambda operation: operation['date'], reverse=True)
 
 
@@ -28,14 +28,15 @@ def five_operations(operations):
 
 
 def formatter_date(operations):
-    """форматирует дату к нужному виду"""
+    """Получает на вход дату в формате ГГГГ-ММ-ДДTЧЧ:ММ:СС.0000 и
+    форматирует дату к виду ДД.ММ.ГГГГ"""
     date_lst = operations['date'].split('T')
     new_date = date_lst[0].split('-')
     return '.'.join(new_date[::-1])
 
 
 def formatter_from(pay):
-    """Маскирует от кого платеж"""
+    """Маскирует отправителя платежа"""
     format_pay = pay.split()
     name = ' '.join(format_pay[:-1])
     number = ''.join(format_pay[-1])
@@ -45,7 +46,7 @@ def formatter_from(pay):
 
 
 def formatter_to(pay):
-    """Маскирует кому платеж"""
+    """Маскирует получателя платежа"""
     format_pay = pay.split()
     name = ' '.join(format_pay[:-1])
     number = ''.join(format_pay[-1])
